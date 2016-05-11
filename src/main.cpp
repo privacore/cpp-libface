@@ -365,7 +365,7 @@ escape_special_chars(std::string& str) {
 
 void
 replace_spaces(std::string& str) {
-    for (size_t j = 0; j < str.size(); ++j) {
+    for (size_t j = 0; j < str.size(); ++j) 
         if (str[j]==' ') str[j]='+';
 }
 
