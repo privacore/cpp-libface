@@ -401,7 +401,7 @@ suggestions_json_array(vp_t& suggestions) {
 
 
 std::string
-suggestion_scores_json_array(vp_t& suggestions) {
+suggestions_scores_json_array(vp_t& suggestions) {
     std::string ret = "[";
     ret.reserve(OUTPUT_SIZE_RESERVE);
     for (vp_t::iterator i = suggestions.begin(); i != suggestions.end(); ++i) {
@@ -415,7 +415,7 @@ suggestion_scores_json_array(vp_t& suggestions) {
 }
 
 std::string
-suggestion_urls_json_array(std::string domain, vp_t& suggestions) {
+suggestions_urls_json_array(std::string domain, vp_t& suggestions) {
     std::string ret = "[";
     ret.reserve(OUTPUT_SIZE_RESERVE);
     escape_special_chars(domain);
@@ -425,7 +425,7 @@ suggestion_urls_json_array(std::string domain, vp_t& suggestions) {
         replace_spaces(phrase);
 
         std::string trailer = i + 1 == suggestions.end() ? "\n" : ",\n";
-        ret += "\"" + domain + pharse + "\"" + trailer;
+        ret += "\"" + domain + phrase + "\"" + trailer;
     }
     ret += "]";
     return ret;
@@ -441,7 +441,7 @@ results_json(std::string q, vp_t& suggestions, std::string const& type) {
         escape_special_chars(q);
         return "[ \"" + q + "\", "
             + suggestions_json_array(suggestions) + ",\n"
-            + suggestion_scores_json_array(suggestions) + ",\n"
+            + suggestions_scores_json_array(suggestions) + ",\n"
             + suggestions_urls_json_array(domain, suggestions) 
             + " ]";
     } else {
