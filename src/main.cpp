@@ -827,7 +827,7 @@ parse_options(int argc, char *argv[]) {
             {0, 0, 0, 0}
         };
 
-        c = getopt_long(argc, argv, "f:u,p:l:h",
+        c = getopt_long(argc, argv, "f:u:p:l:h",
                         long_options, &option_index);
 
         if (c == -1)
