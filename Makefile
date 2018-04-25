@@ -14,7 +14,7 @@ else
 OBJDEPS += deps/http-parser/http_parser_g.o
 endif
 
-.PHONY: all clean debug test perf
+.PHONY: all clean debug test perf static
 
 all: CXXFLAGS += -O2
 all: targets
@@ -24,6 +24,9 @@ debug: targets
 
 test: CXXFLAGS += -g -DDEBUG
 perf: CXXFLAGS += -O2
+static: CXXFLAGS += -O2 -static-libstdc++
+static: targets
+
 
 targets: lib-face
 
